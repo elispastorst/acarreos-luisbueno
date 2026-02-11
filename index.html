@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Luis Eduardo Bueno • Viajes y Mudanzas Cúcuta</title>
+    <!-- FONTS ESPECTACULARES -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <!-- FONT AWESOME 6 (ÍCONOS PROFESIONALES) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* RESET TOTAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f6f9fc;
+            color: #0a2c3d;
+            line-height: 1.5;
+        }
+
+        /* === HEADER CON MENÚ HAMBURGUESA === */
+        header {
+            background: #0a3144;
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .logo h1 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffd966;
+            text-shadow: 2px 2px 0 #0a1e2a;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            font-size: 0.85rem;
+            color: white;
+            font-weight: 400;
+            display: block;
+        }
+
+        /* === MENÚ HAMBURGUESA DE LUJO === */
+        .menu-toggle {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ffd966;
+            transition: 0.3s;
+            z-index: 1001;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 49, 68, 0.98);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-contenido {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .menu-contenido ul {
+            list-style: none;
+        }
+
+        .menu-contenido li {
+            margin: 1.8rem 0;
+        }
+
+        .menu-contenido a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.2s;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 8px;
+        }
+
+        .menu-contenido a:hover {
+            border-bottom-color: #ffd966;
+            color: #ffd966;
+        }
+
+        .cerrar-menu {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 3rem;
+            color: #ffd966;
+            cursor: pointer;
+        }
+
+        /* === CAMIONCITO ÉPICO (VECTOR CSS PURO) === */
+        .hero {
+            background: linear-gradient(145deg, #0e3b52, #0a3144);
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .truck-container {
+            margin-bottom: 1.5rem;
+            transform: scale(1.2);
+        }
+
+        .truck {
+            width: 220px;
+            height: 90px;
+            background: #ffd966;
+            border-radius: 15px 30px 15px 15px;
+            position: relative;
+            border-bottom: 6px solid #b47c2e;
+            box-shadow: 0 10px 0 #7e5a1e;
+        }
+
+        .truck::before {
+            content: "";
+            position: absolute;
+            width: 65px;
+            height: 70px;
+            background: #e8b12c;
+            right: -18px;
+            top: -22px;
+            border-radius: 20px 40px 10px 10px;
+            border-bottom: 6px solid #b47c2e;
+            box-shadow: 0 10px 0 #7e5a1e;
+        }
+
+        .truck::after {
+            content: "";
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: #b0e0ff;
+            right: -6px;
+            top: -12px;
+            border-radius: 8px 20px 8px 8px;
+            border: 3px solid #0a2c3d;
+        }
+
+        .wheel {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            bottom: -14px;
+            left: 25px;
+            border: 4px solid #4a4a4a;
+            box-shadow: inset 0 0 0 3px #2e2e2e, 0 6px 0 #111;
+        }
+
+        .wheel2 { left: 95px; }
+        .wheel3 { left: 165px; }
+
+        .carga {
+            position: absolute;
+            width: 70px;
+            height: 35px;
+            background: #b47c2e;
+            top: -28px;
+            left: 35px;
+            border-radius: 8px;
+            border-bottom: 5px solid #6b4a1a;
+            box-shadow: 0 8px 0 #4d3513;
+        }
+
+        .carga::after {
+            content: "●●●";
+            position: absolute;
+            color: #4d3513;
+            font-size: 18px;
+            top: 6px;
+            left: 12px;
+            letter-spacing: 8px;
+        }
+
+        .hero-text {
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 4px 4px 0 #07222e;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ffd966;
+            font-weight: 700;
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+        }
+
+        /* === BOTONES WHATSAPP Y LLAMADA FLOTANTES === */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .btn-wa, .btn-call {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+            transition: 0.25s;
+            text-decoration: none;
+        }
+
+        .btn-wa {
+            background: #25d366;
+        }
+
+        .btn-call {
+            background: #0a3144;
+            border: 2px solid #ffd966;
+        }
+
+        .btn-wa:hover, .btn-call:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+        }
+
+        /* === SECCIÓN SERVICIOS EXPLOSIVA === */
+        .servicios {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #0a3144;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: #ffd966;
+            margin: 10px auto 0;
+            border-radius: 10px;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .servicio-item {
+            background: #f0f6fa;
+            padding: 1.8rem 1rem;
+            text-align: center;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0a3144;
+            border-bottom: 6px solid #ffd966;
+            transition: 0.2s;
+            box-shadow: 0 5px 0 #b47c2e;
+        }
+
+        .servicio-item i {
+            font-size: 2.2rem;
+            color: #0a3144;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .servicio-item:hover {
+            transform: translateY(-5px);
+            background: #ffd966;
+            color: #0a3144;
+            border-bottom-color: #0a3144;
+        }
+
+        /* === TARJETA DE PRESENTACIÓN DIGITAL === */
+        .tarjeta-digital {
+            background: linear-gradient(145deg, #ffd966, #f3c74d);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .business-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #0a3144;
+            padding: 2rem 1.5rem;
+            border-radius: 30px;
+            color: white;
+            box-shadow: 15px 15px 0 #0a1e2a;
+            border: 3px solid white;
+        }
+
+        .bc-nombre {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 3px 3px 0 #07222e;
+            margin-bottom: 0.5rem;
+        }
+
+        .bc-telefono {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: #ffd966;
+            color: #0a3144;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 1rem 0;
+            border-bottom: 6px solid #b47c2e;
+            box-shadow: 0 8px 0 #7e5a1e;
+            letter-spacing: 2px;
+        }
+
+        .bc-servicios {
+            font-size: 1.1rem;
+            color: #ffd966;
+            font-weight: 700;
+            margin: 0.8rem 0;
+        }
+
+        .bc-ubicacion {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: #0e3b52;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            border: 2px solid #ffd966;
+            display: inline-block;
+        }
+
+        /* === COBERTURA NACIONAL === */
+        .cobertura {
+            padding: 3rem 1.5rem;
+            background: #0a3144;
+            color: white;
+            text-align: center;
+        }
+
+        .cobertura h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ffd966;
+        }
+
+        .cobertura p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1.5rem auto;
+        }
+
+        /* === BOTÓN LLAMADA A LA ACCIÓN === */
+        .cta {
+            padding: 2rem 1.5rem 4rem;
+            text-align: center;
+            background: white;
+        }
+
+        .btn-pedido {
+            background: #0a3144;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 900;
+            padding: 1rem 2.5rem;
+            border-radius: 80px;
+            text-decoration: none;
+            display: inline-block;
+            border-bottom: 8px solid #b47c2e;
+            transition: 0.15s;
+            box-shadow: 0 12px 0 #0a1e2a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .btn-pedido:hover {
+            transform: translateY(6px);
+            box-shadow: 0 6px 0 #0a1e2a;
+            background: #ffd966;
+            color: #0a3144;
+            border-bottom-color: #7e5a1e;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #051f2a;
+            color: white;
+            text-align: center;
+            padding: 1.8rem;
+            font-size: 1rem;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 1.8rem; }
+            .bc-telefono { font-size: 1.6rem; }
+            .btn-pedido { font-size: 1.4rem; padding: 0.8rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- === HEADER CON MENÚ HAMBURGUESA === -->
+<header>
+    <div class="logo">
+        <h1>LUIS EDUARDO BUENO</h1>
+        <span>Viajes • Mudanzas • Acarreos</span>
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</header>
+
+<!-- === OVERLAY MENÚ HAMBURGUESA === -->
+<div class="overlay" id="menuOverlay">
+    <div class="cerrar-menu" id="cerrarMenu">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="menu-contenido">
+        <ul>
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#servicios"><i class="fas fa-truck"></i> Servicios</a></li>
+            <li><a href="#tarjeta"><i class="fas fa-id-card"></i> Contacto</a></li>
+            <li><a href="#cobertura"><i class="fas fa-map-marked-alt"></i> Cobertura</a></li>
+            <li><a href="tel:3042558967"><i class="fas fa-phone-alt"></i> Llamar</a></li>
+            <li><a href="https://wa.me/573042558967" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- === HERO CON CAMIONCITO ÉPICO === -->
+<section id="inicio" class="hero">
+    <div class="truck-container">
+        <div class="truck">
+            <div class="wheel"></div>
+            <div class="wheel wheel2"></div>
+            <div class="wheel wheel3"></div>
+            <div class="carga"></div>
+        </div>
+    </div>
+    <div class="hero-text">
+        <h2>¡PEDIDOS YA!</h2>
+        <p>🚛 24/7 A TU SERVICIO</p>
+    </div>
+</section>
+
+<!-- === BOTONES FLOTANTES WHATSAPP Y LLAMADA === -->
+<div class="floating-buttons">
+    <a href="https://wa.me/573042558967" target="_blank" class="btn-wa" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:3042558967" class="btn-call" title="Llamar ahora">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+</div>
+
+<!-- === SERVICIOS PROFESIONALES === -->
+<section id="servicios" class="servicios">
+    <h2 class="section-title">SERVICIOS ÉPICOS</h2>
+    <div class="servicios-grid">
+        <div class="servicio-item">
+            <i class="fas fa-truck-moving"></i>
+            VIAJES
+        </div>
+        <div class="servicio-item">
+            <i class="fas fa-people-carry"></i>
+            MUDANZAS
+        </div>
+        <div class="servicio-item">
+            <i class="fas fa-boxes"></i>
+            TRASTEOS
+        </div>
+        <div class="servicio-item">
+            <i class="fas fa-dolly"></i>
+            ACARREOS
+        </div>
+        <div class="servicio-item">
+            <i class="fas fa-clock"></i>
+            URGENCIAS
+        </div>
+        <div class="servicio-item">
+            <i class="fas fa-shield-alt"></i>
+            SEGURO
+        </div>
+    </div>
+</section>
+
+<!-- === TARJETA DE PRESENTACIÓN DIGITAL === -->
+<section id="tarjeta" class="tarjeta-digital">
+    <div class="business-card">
+        <div style="display:flex; justify-content:center; margin-bottom:10px;">
+            <i class="fas fa-truck" style="font-size: 2.8rem; color: #ffd966;"></i>
+        </div>
+        <div class="bc-nombre">
+            LUIS EDUARDO BUENO
+        </div>
+        <div class="bc-telefono">
+            304 255 8967
+        </div>
+        <div class="bc-servicios">
+            ⚡ VIAJES • MUDANZAS • TRASTEOS • ACARREOS ⚡
+        </div>
+        <div class="bc-ubicacion">
+            📍 CÚCUTA, COLOMBIA
+        </div>
+        <div style="margin-top: 1rem; font-size: 1.3rem; color: #ffd966; font-weight: 800;">
+            🚛 A NIVEL NACIONAL
+        </div>
+    </div>
+</section>
+
+<!-- === COBERTURA NACIONAL === -->
+<section id="cobertura" class="cobertura">
+    <h3>🇨🇴 COBERTURA NACIONAL 🇨🇴</h3>
+    <p>Llegamos a cualquier rincón de Colombia. Desde Cúcuta hasta donde nos necesites. Confianza, seriedad y rapidez.</p>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 1.5rem; color: #ffd966; font-size: 1.4rem;">
+        <span><i class="fas fa-check-circle"></i> Bogotá</span>
+        <span><i class="fas fa-check-circle"></i> Medellín</span>
+        <span><i class="fas fa-check-circle"></i> Cali</span>
+        <span><i class="fas fa-check-circle"></i> Barranquilla</span>
+        <span><i class="fas fa-check-circle"></i> Bucaramanga</span>
+        <span><i class="fas fa-check-circle"></i> Santa Marta</span>
+    </div>
+</section>
+
+<!-- === BOTÓN PEDIDO MASIVO === -->
+<section class="cta">
+    <a href="https://wa.me/573042558967?text=¡Hola%20Luis%20Eduardo!%20Necesito%20un%20servicio%20de%20mudanza/acarreo.%20¿Me%20ayudas%3F" target="_blank" class="btn-pedido">
+        <i class="fab fa-whatsapp"></i> PEDIR AHORA
+    </a>
+    <p style="margin-top: 1.8rem; font-size: 1.2rem; color: #0a3144; font-weight: 700;">
+        📞 RESPUESTA INMEDIATA - 304 255 8967
+    </p>
+</section>
+
+<!-- === FOOTER === -->
+<footer>
+    <p style="font-size: 1.3rem; font-weight: 800; color: #ffd966;">LUIS EDUARDO BUENO</p>
+    <p style="margin: 0.7rem 0;">Viajes y mudanzas • Trasteos • Acarreos</p>
+    <p style="margin: 0.7rem 0; font-size: 1.1rem;">
+        <i class="fas fa-map-marker-alt"></i> Cúcuta, Norte de Santander • 
+        <i class="fas fa-phone-alt"></i> 304 255 8967
+    </p>
+    <p style="margin-top: 1rem; opacity: 0.8;">© 2026 - Servicio nacional • Confianza total</p>
+</footer>
+
+<!-- === JAVASCRIPT PARA MENÚ HAMBURGUESA === -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const overlay = document.getElementById('menuOverlay');
+    const cerrar = document.getElementById('cerrarMenu');
+
+    menuToggle.addEventListener('click', () => {
+        overlay.classList.add('active');
+    });
+
+    cerrar.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.menu-contenido a').forEach(link => {
+        link.addEventListener('click', () => {
+            overlay.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>
