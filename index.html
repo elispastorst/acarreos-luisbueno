@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Luis Eduardo Bueno • Viajes y Mudanzas Cúcuta</title>
-    <!-- FONTS ESPECTACULARES -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
-    <!-- FONT AWESOME 6 (ÍCONOS PROFESIONALES) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* RESET TOTAL */
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +20,6 @@
             line-height: 1.5;
         }
 
-        /* === HEADER CON MENÚ HAMBURGUESA === */
         header {
             background: #0a3144;
             color: white;
@@ -52,7 +48,6 @@
             display: block;
         }
 
-        /* === MENÚ HAMBURGUESA DE LUJO === */
         .menu-toggle {
             font-size: 2rem;
             cursor: pointer;
@@ -66,7 +61,6 @@
             color: white;
         }
 
-        /* OVERLAY */
         .overlay {
             position: fixed;
             top: 0;
@@ -128,7 +122,6 @@
             cursor: pointer;
         }
 
-        /* === CAMIONCITO ÉPICO (VECTOR CSS PURO) === */
         .hero {
             background: linear-gradient(145deg, #0e3b52, #0a3144);
             padding: 2.5rem 1.5rem;
@@ -142,79 +135,6 @@
 
         .truck-container {
             margin-bottom: 1.5rem;
-            transform: scale(1.2);
-        }
-
-        .truck {
-            width: 220px;
-            height: 90px;
-            background: #ffd966;
-            border-radius: 15px 30px 15px 15px;
-            position: relative;
-            border-bottom: 6px solid #b47c2e;
-            box-shadow: 0 10px 0 #7e5a1e;
-        }
-
-        .truck::before {
-            content: "";
-            position: absolute;
-            width: 65px;
-            height: 70px;
-            background: #e8b12c;
-            right: -18px;
-            top: -22px;
-            border-radius: 20px 40px 10px 10px;
-            border-bottom: 6px solid #b47c2e;
-            box-shadow: 0 10px 0 #7e5a1e;
-        }
-
-        .truck::after {
-            content: "";
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background: #b0e0ff;
-            right: -6px;
-            top: -12px;
-            border-radius: 8px 20px 8px 8px;
-            border: 3px solid #0a2c3d;
-        }
-
-        .wheel {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            background: #1a1a1a;
-            border-radius: 50%;
-            bottom: -14px;
-            left: 25px;
-            border: 4px solid #4a4a4a;
-            box-shadow: inset 0 0 0 3px #2e2e2e, 0 6px 0 #111;
-        }
-
-        .wheel2 { left: 95px; }
-        .wheel3 { left: 165px; }
-
-        .carga {
-            position: absolute;
-            width: 70px;
-            height: 35px;
-            background: #b47c2e;
-            top: -28px;
-            left: 35px;
-            border-radius: 8px;
-            border-bottom: 5px solid #6b4a1a;
-            box-shadow: 0 8px 0 #4d3513;
-        }
-
-        .carga::after {
-            content: "●●●";
-            position: absolute;
-            color: #4d3513;
-            font-size: 18px;
-            top: 6px;
-            left: 12px;
-            letter-spacing: 8px;
         }
 
         .hero-text {
@@ -241,7 +161,6 @@
             border-radius: 50px;
         }
 
-        /* === BOTONES WHATSAPP Y LLAMADA FLOTANTES === */
         .floating-buttons {
             position: fixed;
             bottom: 30px;
@@ -280,7 +199,6 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.35);
         }
 
-        /* === SECCIÓN SERVICIOS EXPLOSIVA === */
         .servicios {
             padding: 3rem 1.5rem;
             background: white;
@@ -340,7 +258,6 @@
             border-bottom-color: #0a3144;
         }
 
-        /* === TARJETA DE PRESENTACIÓN DIGITAL === */
         .tarjeta-digital {
             background: linear-gradient(145deg, #ffd966, #f3c74d);
             padding: 2.5rem 1.5rem;
@@ -397,7 +314,6 @@
             display: inline-block;
         }
 
-        /* === COBERTURA NACIONAL === */
         .cobertura {
             padding: 3rem 1.5rem;
             background: #0a3144;
@@ -417,7 +333,6 @@
             margin: 1.5rem auto;
         }
 
-        /* === BOTÓN LLAMADA A LA ACCIÓN === */
         .cta {
             padding: 2rem 1.5rem 4rem;
             text-align: center;
@@ -448,7 +363,6 @@
             border-bottom-color: #7e5a1e;
         }
 
-        /* === FOOTER === */
         footer {
             background: #051f2a;
             color: white;
@@ -457,17 +371,16 @@
             font-size: 1rem;
         }
 
-        /* === RESPONSIVE === */
         @media (max-width: 480px) {
             .hero h2 { font-size: 1.8rem; }
             .bc-telefono { font-size: 1.6rem; }
             .btn-pedido { font-size: 1.4rem; padding: 0.8rem 1.5rem; }
+            .truck-container img { width: 240px; }
         }
     </style>
 </head>
 <body>
 
-<!-- === HEADER CON MENÚ HAMBURGUESA === -->
 <header>
     <div class="logo">
         <h1>LUIS EDUARDO BUENO</h1>
@@ -478,7 +391,6 @@
     </div>
 </header>
 
-<!-- === OVERLAY MENÚ HAMBURGUESA === -->
 <div class="overlay" id="menuOverlay">
     <div class="cerrar-menu" id="cerrarMenu">
         <i class="fas fa-times"></i>
@@ -495,15 +407,12 @@
     </div>
 </div>
 
-<!-- === HERO CON CAMIONCITO ÉPICO === -->
+<!-- === HERO CON TU CAMIÓN REAL - YA LISTO === -->
 <section id="inicio" class="hero">
     <div class="truck-container">
-        <div class="truck">
-            <div class="wheel"></div>
-            <div class="wheel wheel2"></div>
-            <div class="wheel wheel3"></div>
-            <div class="carga"></div>
-        </div>
+        <img src="https://raw.githubusercontent.com/elpatronc/LuisEduardoBueno/main/imagen1.jpg" 
+             alt="Camión de mudanzas Luis Eduardo Bueno" 
+             style="width: 280px; max-width: 100%; border-radius: 15px; border: 5px solid #ffd966; box-shadow: 0 15px 0 #7e5a1e;">
     </div>
     <div class="hero-text">
         <h2>¡PEDIDOS YA!</h2>
@@ -511,7 +420,6 @@
     </div>
 </section>
 
-<!-- === BOTONES FLOTANTES WHATSAPP Y LLAMADA === -->
 <div class="floating-buttons">
     <a href="https://wa.me/573042558967" target="_blank" class="btn-wa" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -521,7 +429,6 @@
     </a>
 </div>
 
-<!-- === SERVICIOS PROFESIONALES === -->
 <section id="servicios" class="servicios">
     <h2 class="section-title">SERVICIOS ÉPICOS</h2>
     <div class="servicios-grid">
@@ -552,7 +459,6 @@
     </div>
 </section>
 
-<!-- === TARJETA DE PRESENTACIÓN DIGITAL === -->
 <section id="tarjeta" class="tarjeta-digital">
     <div class="business-card">
         <div style="display:flex; justify-content:center; margin-bottom:10px;">
@@ -576,7 +482,6 @@
     </div>
 </section>
 
-<!-- === COBERTURA NACIONAL === -->
 <section id="cobertura" class="cobertura">
     <h3>🇨🇴 COBERTURA NACIONAL 🇨🇴</h3>
     <p>Llegamos a cualquier rincón de Colombia. Desde Cúcuta hasta donde nos necesites. Confianza, seriedad y rapidez.</p>
@@ -590,7 +495,6 @@
     </div>
 </section>
 
-<!-- === BOTÓN PEDIDO MASIVO === -->
 <section class="cta">
     <a href="https://wa.me/573042558967?text=¡Hola%20Luis%20Eduardo!%20Necesito%20un%20servicio%20de%20mudanza/acarreo.%20¿Me%20ayudas%3F" target="_blank" class="btn-pedido">
         <i class="fab fa-whatsapp"></i> PEDIR AHORA
@@ -600,7 +504,6 @@
     </p>
 </section>
 
-<!-- === FOOTER === -->
 <footer>
     <p style="font-size: 1.3rem; font-weight: 800; color: #ffd966;">LUIS EDUARDO BUENO</p>
     <p style="margin: 0.7rem 0;">Viajes y mudanzas • Trasteos • Acarreos</p>
@@ -611,7 +514,6 @@
     <p style="margin-top: 1rem; opacity: 0.8;">© 2026 - Servicio nacional • Confianza total</p>
 </footer>
 
-<!-- === JAVASCRIPT PARA MENÚ HAMBURGUESA === -->
 <script>
     const menuToggle = document.getElementById('menuToggle');
     const overlay = document.getElementById('menuOverlay');
@@ -631,7 +533,6 @@
         }
     });
 
-    // Cerrar menú al hacer clic en un enlace
     document.querySelectorAll('.menu-contenido a').forEach(link => {
         link.addEventListener('click', () => {
             overlay.classList.remove('active');
